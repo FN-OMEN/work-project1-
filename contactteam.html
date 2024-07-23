@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .left, .right {
+            padding: 20px;
+            width: 100px;
+        }
+        
+        .left {
+            background: url('office building.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            border-right: 1px solid #ccc;
+            
+        }
+        .right {
+            background-color: #fff;
+            
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .info {
+            margin-bottom: 20px;
+        }
+        .info label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .info div img {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left">
+        <h2>Contact Information</h2>
+        <div class="info">
+            <label>Address</label>
+            <div><i class="fa-solid fa-location-dot"></i>The Eshrow, 6th Floor, 2 Landbridge Road, Oniru - Victoria Island, Lagos - Nigeria</div>
+        </div>
+        <div class="info">
+            <label>Let's Talk</label>
+            <div><i class="fa-solid fa-phone"></i>080222111232</div>
+        </div>
+        <div class="info">
+            <label>General Support</label>
+            <div><i class="fa-solid fa-envelope"></i>imperialcrest@gmail.com</div>
+        </div>
+    </div>
+    <div class="right">
+        <h2>Send Us A Message</h2>
+        <form id="contactForm">
+            <div class="error" id="error"></div>
+            
+            <label for="firstName">Tell us your name *</label>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+            
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+            
+            <label for="email">Enter your email *</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <label for="phone">Enter your phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let error = '';
+        
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        
+        if (!firstName || !lastName || !email) {
+            error = 'Please fill in all required fields.';
+        }
+        
+        if (error) {
+            document.getElementById('error').textContent = error;
+        } else {
+            document.getElementById('error').textContent = '';
+            alert('Form submitted successfully!');
+            // Optionally, add code here to send the form data to a server
+            document.getElementById('contactForm').reset();
+        }
+    });
+</script>
+
+</body>
+</html>
